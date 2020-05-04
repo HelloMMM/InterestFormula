@@ -1,0 +1,6 @@
+framework module Pods_InterestFormula {
+  umbrella header "Pods-InterestFormula-umbrella.h"
+
+  export *
+  module * { export * }
+}
