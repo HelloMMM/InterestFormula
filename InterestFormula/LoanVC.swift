@@ -19,7 +19,16 @@ class LoanVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loanAmount.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
+        loanMonth.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
+        yearInterestRate.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
+        
         interstitial = createAndLoadInterstitial()
+    }
+    
+    @objc func textFieldChange(_ textField: UITextField) {
+        
+        textField.text = setInterval(text: textField.text!)
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
@@ -51,7 +60,11 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         
         view.endEditing(true)
         
-        if loanAmount.text == "" || loanMonth.text == "" || yearInterestRate.text == "" {
+        let newLoanAmount = loanAmount.text!.replacingOccurrences(of: ",", with: "")
+        let newLoanMonth = loanMonth.text!.replacingOccurrences(of: ",", with: "")
+        let newYearInterestRate = yearInterestRate.text!.replacingOccurrences(of: ",", with: "")
+        
+        if loanAmount.text == "" || loanMonth.text == "" || yearInterestRate.text == "" || loanAmount.text == "0" || loanMonth.text == "0" || yearInterestRate.text == "0" {
             return
         }
         
@@ -63,9 +76,9 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         
         let calculationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CalculationVC") as! CalculationVC
         
-        calculationVC.loanAmount = Double(loanAmount.text!.replacingOccurrences(of: ",", with: ""))!
-        calculationVC.loanMonth = Double(loanMonth.text!)
-        calculationVC.yearInterestRate = Double(yearInterestRate.text!)
+        calculationVC.loanAmount = Double(newLoanAmount)!
+        calculationVC.loanMonth = Double(newLoanMonth)
+        calculationVC.yearInterestRate = Double(newYearInterestRate)
         
         navigationController?.pushViewController(calculationVC, animated: true)
     }
@@ -83,7 +96,7 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         
         let newText = text.replacingOccurrences(of: ",", with: "")
         
-        let formatter = NumberFormatter().number(from: newText)!
+        let formatter = NumberFormatter().number(from: newText) ?? 0
         let formattedText = NumberFormatter.localizedString(from: formatter, number: .decimal)
         
         return formattedText

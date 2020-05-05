@@ -41,8 +41,13 @@ class TabBarVC: UITabBarController {
         bannerView.delegate = self
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
-        bannerView.frame = CGRect(x: 0, y: view.frame.height-bannerView.frame.height-tabBar.frame.height, width: view.frame.width, height: bannerView.frame.height)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(bannerView)
+        bannerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor, constant: 0).isActive = true
+        bannerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        bannerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        bannerView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor, constant: 0).isActive = true
     }
 }
 
