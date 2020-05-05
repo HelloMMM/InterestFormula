@@ -52,17 +52,8 @@ class BusinessVC: UIViewController {
     
     func setExrate() {
         
-        if country1 == "USD" {
-            country1Extate = 1
-        } else {
-            country1Extate = (currencyValueModel[country2] as! Dictionary<String, Any>)["Exrate"] as! Double
-        }
-        
-        if country2 == "USD" {
-            country2Extate = 1
-        } else {
-            country2Extate = (currencyValueModel[country1] as! Dictionary<String, Any>)["Exrate"] as! Double
-        }
+        country1Extate = (currencyValueModel[country1] as! Dictionary<String, Any>)["Exrate"] as! Double
+        country2Extate = (currencyValueModel[country2] as! Dictionary<String, Any>)["Exrate"] as! Double
     }
     
     @IBAction func exchange(_ sender: UIButton) {
@@ -115,24 +106,42 @@ class BusinessVC: UIViewController {
             self.country2 = self.countryCode[countryNumber]
             
             self.setExrate()
-            self.calculation2()
+            self.calculation1()
         }
         
         customPickerView.lastSelect = currency2LastSelect
     }
     
     func calculation1() {
-        let moneyUSD = Float(currencyText1.text!) ?? 0 / Float(country1Extate)
         
-        print("\(moneyUSD) \(country2Extate)")
-        let money = moneyUSD * Float(country2Extate)
-        currencyText2.text = String(format: "%.3f", money)
+        let newText = currencyText1.text!.replacingOccurrences(of: ",", with: "")
+        
+        let moneyUSD = (Double(newText) ?? 0) / country1Extate
+        let money = moneyUSD * country2Extate
+        
+        currencyText2.text = setInterval(text: "\(Int(money))")
+        currencyText1.text! = setInterval(text: currencyText1.text!)
     }
     
     func calculation2() {
-        let moneyUSD = Float(currencyText2.text!) ?? 0 / Float(country2Extate)
-        let money = moneyUSD * Float(country1Extate)
-        currencyText1.text = String(format: "%.3f", money)
+        
+        let newText = currencyText2.text!.replacingOccurrences(of: ",", with: "")
+        
+        let moneyUSD = (Double(newText) ?? 0) / country2Extate
+        let money = moneyUSD * country1Extate
+        
+        currencyText1.text = setInterval(text: "\(Int(money))")
+        currencyText2.text! = setInterval(text: currencyText2.text!)
+    }
+    
+    func setInterval(text: String) -> String {
+        
+        let newText = text.replacingOccurrences(of: ",", with: "")
+        
+        let formatter = NumberFormatter().number(from: newText) ?? 0
+        let formattedText = NumberFormatter.localizedString(from: formatter, number: .decimal)
+        
+        return formattedText
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -142,79 +151,4 @@ class BusinessVC: UIViewController {
 
 extension BusinessVC: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        if textField.text == "0" {
-           
-            textField.text = ""
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if textField.text == "" {
-            
-            textField.text = "0"
-            isZero = false
-        }
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField.text == "0" {
-            
-            if range.location == 0 {
-                return true
-            }
-            
-            if string != "." {
-                return false
-            }
-        }
-        
-        if string == "." {
-            
-            if isPoint {
-                return false
-            } else {
-                isPoint = true
-                
-                if textField.text == "" {
-                    textField.text = "0"
-                }
-            }
-        }
-        
-        let s = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        if !s.contains(".") {
-            isPoint = false
-        }
-        
-        return true
-    }
-    
-//    func textFieldDidChangeSelection(_ textField: UITextField) {
-//
-//        if textField == currencyText1 {
-//
-//            if textField.text == "0" || textField.text == "" || textField.text == "."{
-//
-//                textField.text = ""
-//                currencyText2.text = "0"
-//                return
-//            }
-//
-//            calculation1()
-//        } else {
-//
-//            if textField.text == "0" || textField.text == "" || textField.text == "."{
-//
-//                textField.text = ""
-//                currencyText1.text = "0"
-//                return
-//            }
-//
-//            calculation2()
-//        }
-//    }
 }

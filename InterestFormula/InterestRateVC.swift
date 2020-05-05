@@ -20,7 +20,16 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loanAmount.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
+        monthMonry.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
+        loanMonth.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
+        
         interstitial = createAndLoadInterstitial()
+    }
+    
+    @objc func textFieldChange(_ textField: UITextField) {
+        
+        textField.text = setInterval(text: textField.text!)
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
@@ -50,7 +59,14 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func computer(_ sender: UIButton) {
         
-        if loanAmount.text == "" || loanMonth.text == "" || monthMonry.text == "" {
+        view.endEditing(true)
+        
+        let newLoanAmount = loanAmount.text!.replacingOccurrences(of: ",", with: "")
+        let newMonthMonry = monthMonry.text!.replacingOccurrences(of: ",", with: "")
+        let newLoanMonth = loanMonth.text!.replacingOccurrences(of: ",", with: "")
+        
+        if newLoanAmount == "0" || newMonthMonry == "0" || newLoanMonth == "0" || loanAmount.text == "" || loanMonth.text == "" || monthMonry.text == "" {
+            
             return
         }
     
@@ -59,10 +75,6 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
         } else {
             interstitial = createAndLoadInterstitial()
         }
-        
-        let newLoanAmount = loanAmount.text!.replacingOccurrences(of: ",", with: "")
-        let newMonthMonry = monthMonry.text!.replacingOccurrences(of: ",", with: "")
-        let newLoanMonth = loanMonth.text!.replacingOccurrences(of: ",", with: "")
         
         let monthMoney = Int(newLoanAmount)! / Int(newLoanMonth)!
         let averageBalance = Double(Double(newLoanAmount)! + Double(monthMoney)) / 2
@@ -80,21 +92,10 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
         
         let newText = text.replacingOccurrences(of: ",", with: "")
         
-        let formatter = NumberFormatter().number(from: newText)!
+        let formatter = NumberFormatter().number(from: newText) ?? 0
         let formattedText = NumberFormatter.localizedString(from: formatter, number: .decimal)
         
         return formattedText
-    }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        
-        if textField == loanMonth {
-            return
-        } else {
-            if textField.text == "" { return }
-            
-            textField.text = setInterval(text: textField.text!)
-        }
     }
 }
 
