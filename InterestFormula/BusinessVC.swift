@@ -29,11 +29,25 @@ class BusinessVC: UIViewController {
     var country2Extate: Double = 0
     var currency1LastSelect = 0
     var currency2LastSelect = 3
+    var isZero = false
+    var isPoint = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+     
+        currencyText1.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
+        currencyText2.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
+        
         setExrate()
+    }
+    
+    @objc func textFieldChange(_ textField: UITextField) {
+        
+        if textField == currencyText1 {
+            calculation1()
+        } else {
+            calculation2()
+        }
     }
     
     func setExrate() {
@@ -41,13 +55,13 @@ class BusinessVC: UIViewController {
         if country1 == "USD" {
             country1Extate = 1
         } else {
-            country1Extate = (currencyValueModel[country1] as! Dictionary<String, Any>)["Exrate"] as! Double
+            country1Extate = (currencyValueModel[country2] as! Dictionary<String, Any>)["Exrate"] as! Double
         }
         
         if country2 == "USD" {
             country2Extate = 1
         } else {
-            country2Extate = (currencyValueModel[country2] as! Dictionary<String, Any>)["Exrate"] as! Double
+            country2Extate = (currencyValueModel[country1] as! Dictionary<String, Any>)["Exrate"] as! Double
         }
     }
     
@@ -67,6 +81,9 @@ class BusinessVC: UIViewController {
         currency1.setTitle(country[currency1LastSelect], for: .normal)
         currency2.setTitle(country[currency2LastSelect], for: .normal)
         
+        if currencyText1.text == "" || currencyText2.text == "" {
+            return
+        }
         calculation1()
     }
     
@@ -105,13 +122,15 @@ class BusinessVC: UIViewController {
     }
     
     func calculation1() {
-        let moneyUSD = Float(currencyText1.text!)! / Float(country1Extate)
+        let moneyUSD = Float(currencyText1.text!) ?? 0 / Float(country1Extate)
+        
+        print("\(moneyUSD) \(country2Extate)")
         let money = moneyUSD * Float(country2Extate)
         currencyText2.text = String(format: "%.3f", money)
     }
     
     func calculation2() {
-        let moneyUSD = Float(currencyText2.text!)! / Float(country2Extate)
+        let moneyUSD = Float(currencyText2.text!) ?? 0 / Float(country2Extate)
         let money = moneyUSD * Float(country1Extate)
         currencyText1.text = String(format: "%.3f", money)
     }
@@ -123,36 +142,79 @@ class BusinessVC: UIViewController {
 
 extension BusinessVC: UITextFieldDelegate {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if textField.text == "0" {
+           
+            textField.text = ""
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField.text == "" {
             
-           textField.text = "0"
+            textField.text = "0"
+            isZero = false
         }
     }
     
-    func textFieldDidChangeSelection(_ textField: UITextField) {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField == currencyText1 {
+        if textField.text == "0" {
             
-            if textField.text == "0" || textField.text == "" || textField.text == "."{
-                
-                textField.text = ""
-                currencyText2.text = "0"
-                return
+            if range.location == 0 {
+                return true
             }
             
-            calculation1()
-        } else {
-            
-            if textField.text == "0" || textField.text == "" || textField.text == "."{
-                
-                textField.text = ""
-                currencyText1.text = "0"
-                return
+            if string != "." {
+                return false
             }
-            
-            calculation2()
         }
+        
+        if string == "." {
+            
+            if isPoint {
+                return false
+            } else {
+                isPoint = true
+                
+                if textField.text == "" {
+                    textField.text = "0"
+                }
+            }
+        }
+        
+        let s = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        if !s.contains(".") {
+            isPoint = false
+        }
+        
+        return true
     }
+    
+//    func textFieldDidChangeSelection(_ textField: UITextField) {
+//
+//        if textField == currencyText1 {
+//
+//            if textField.text == "0" || textField.text == "" || textField.text == "."{
+//
+//                textField.text = ""
+//                currencyText2.text = "0"
+//                return
+//            }
+//
+//            calculation1()
+//        } else {
+//
+//            if textField.text == "0" || textField.text == "" || textField.text == "."{
+//
+//                textField.text = ""
+//                currencyText1.text = "0"
+//                return
+//            }
+//
+//            calculation2()
+//        }
+//    }
 }
