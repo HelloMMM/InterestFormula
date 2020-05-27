@@ -13,6 +13,10 @@
 		DB08020F245ADF7A00754DC6 /* CurrencyValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB08020D245ADF7A00754DC6 /* CurrencyValueModel.swift */; };
 		DB080210245ADF7A00754DC6 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB08020E245ADF7A00754DC6 /* CustomPickerView.swift */; };
 		DB080212245FC50E00754DC6 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB080211245FC50E00754DC6 /* TabBarVC.swift */; };
+		DB41A5DD247D146D00C394C3 /* moreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41A5DC247D146D00C394C3 /* moreVC.swift */; };
+		DB41A5DF247D1BB200C394C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB41A5DE247D1BB200C394C3 /* StoreKit.framework */; };
+		DB41A5E1247D1C2800C394C3 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41A5E0247D1C2800C394C3 /* IAPManager.swift */; };
+		DB41A5E3247D1CA700C394C3 /* NVLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41A5E2247D1CA700C394C3 /* NVLoadingView.swift */; };
 		DB4904CA24580C18005207EB /* InterestRateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4904C924580C18005207EB /* InterestRateVC.swift */; };
 		DB4927EA2456DF9D0001E389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4927E92456DF9D0001E389 /* AppDelegate.swift */; };
 		DB4927EE2456DF9D0001E389 /* LoanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4927ED2456DF9D0001E389 /* LoanVC.swift */; };
@@ -32,6 +36,10 @@
 		DB08020D245ADF7A00754DC6 /* CurrencyValueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyValueModel.swift; sourceTree = "<group>"; };
 		DB08020E245ADF7A00754DC6 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		DB080211245FC50E00754DC6 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		DB41A5DC247D146D00C394C3 /* moreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreVC.swift; sourceTree = "<group>"; };
+		DB41A5DE247D1BB200C394C3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DB41A5E0247D1C2800C394C3 /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		DB41A5E2247D1CA700C394C3 /* NVLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVLoadingView.swift; sourceTree = "<group>"; };
 		DB4904C924580C18005207EB /* InterestRateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRateVC.swift; sourceTree = "<group>"; };
 		DB4927E62456DF9D0001E389 /* 貸款計算器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "貸款計算器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4927E92456DF9D0001E389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2AFAAA4E7DE2FB9AE06AAD6 /* Pods_InterestFormula.framework in Frameworks */,
+				DB41A5DF247D1BB200C394C3 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +68,7 @@
 		1189CA5A956226360FEA801C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB41A5DE247D1BB200C394C3 /* StoreKit.framework */,
 				77BD2DFF91D4EFDCE475EC0E /* Pods_InterestFormula.framework */,
 			);
 			name = Frameworks;
@@ -101,10 +111,13 @@
 				DB4927FF2456F0220001E389 /* CalculationCell.swift */,
 				DB4904C924580C18005207EB /* InterestRateVC.swift */,
 				DB080209245ADF1600754DC6 /* BusinessVC.swift */,
+				DB41A5DC247D146D00C394C3 /* moreVC.swift */,
 				DB08020B245ADF7300754DC6 /* AlaomfireManager.swift */,
 				DB4927EF2456DF9D0001E389 /* Main.storyboard */,
 				DB08020D245ADF7A00754DC6 /* CurrencyValueModel.swift */,
 				DB08020E245ADF7A00754DC6 /* CustomPickerView.swift */,
+				DB41A5E0247D1C2800C394C3 /* IAPManager.swift */,
+				DB41A5E2247D1CA700C394C3 /* NVLoadingView.swift */,
 				DB4927F22456DF9E0001E389 /* Assets.xcassets */,
 				DB4927F42456DF9E0001E389 /* LaunchScreen.storyboard */,
 				DB4927F72456DF9E0001E389 /* Info.plist */,
@@ -227,14 +240,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB41A5E1247D1C2800C394C3 /* IAPManager.swift in Sources */,
 				DB4904CA24580C18005207EB /* InterestRateVC.swift in Sources */,
 				DB4927EE2456DF9D0001E389 /* LoanVC.swift in Sources */,
 				DB080212245FC50E00754DC6 /* TabBarVC.swift in Sources */,
 				DB4927EA2456DF9D0001E389 /* AppDelegate.swift in Sources */,
 				DB4927FE2456EDE00001E389 /* CalculationVC.swift in Sources */,
 				DB08020F245ADF7A00754DC6 /* CurrencyValueModel.swift in Sources */,
+				DB41A5E3247D1CA700C394C3 /* NVLoadingView.swift in Sources */,
 				DB08020A245ADF1600754DC6 /* BusinessVC.swift in Sources */,
 				DB080210245ADF7A00754DC6 /* CustomPickerView.swift in Sources */,
+				DB41A5DD247D146D00C394C3 /* moreVC.swift in Sources */,
 				DB4928002456F0220001E389 /* CalculationCell.swift in Sources */,
 				DB08020C245ADF7300754DC6 /* AlaomfireManager.swift in Sources */,
 			);
@@ -390,7 +406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = uuu.HelloM.LoanCalculator;
 				PRODUCT_NAME = "貸款計算器";
 				PROVISIONING_PROFILE_SPECIFIER = LC_dev_2020.05.01;
@@ -413,7 +429,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = uuu.HelloM.LoanCalculator;
 				PRODUCT_NAME = "貸款計算器";
 				PROVISIONING_PROFILE_SPECIFIER = LC_dev_2020.05.01;

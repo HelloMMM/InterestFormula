@@ -9,5 +9,6 @@ target 'InterestFormula' do
 
 pod 'Alamofire'
 pod 'Google-Mobile-Ads-SDK'
+pod 'NVActivityIndicatorView'
 
 end

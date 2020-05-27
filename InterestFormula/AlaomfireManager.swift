@@ -22,7 +22,7 @@ class AlaomfireManager: NSObject {
             case .success(let json):
                 
                 let responseJson = json as! Dictionary<String, Any>
-                print(responseJson)
+//                print(responseJson)
                 currencyValueModel = responseJson
                 success()
             case .failure(let error):

@@ -114,24 +114,32 @@ class BusinessVC: UIViewController {
     
     func calculation1() {
         
-        let newText = currencyText1.text!.replacingOccurrences(of: ",", with: "")
+        var newText = currencyText1.text!.replacingOccurrences(of: ",", with: "")
+        
+        if newText.count > 11 {
+            newText.removeLast()
+        }
         
         let moneyUSD = (Double(newText) ?? 0) / country1Extate
         let money = moneyUSD * country2Extate
         
         currencyText2.text = setInterval(text: "\(Int(money))")
-        currencyText1.text! = setInterval(text: currencyText1.text!)
+        currencyText1.text! = setInterval(text: newText)
     }
     
     func calculation2() {
         
-        let newText = currencyText2.text!.replacingOccurrences(of: ",", with: "")
+        var newText = currencyText2.text!.replacingOccurrences(of: ",", with: "")
+        
+        if newText.count > 11 {
+            newText.removeLast()
+        }
         
         let moneyUSD = (Double(newText) ?? 0) / country2Extate
         let money = moneyUSD * country1Extate
         
         currencyText1.text = setInterval(text: "\(Int(money))")
-        currencyText2.text! = setInterval(text: currencyText2.text!)
+        currencyText2.text! = setInterval(text: newText)
     }
     
     func setInterval(text: String) -> String {
@@ -147,8 +155,4 @@ class BusinessVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-}
-
-extension BusinessVC: UITextFieldDelegate {
-    
 }

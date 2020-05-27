@@ -9,6 +9,8 @@
 import UIKit
 import GoogleMobileAds
 
+
+
 class TabBarVC: UITabBarController {
 
     var bannerView: GADBannerView!
@@ -20,12 +22,19 @@ class TabBarVC: UITabBarController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(removeAD), name: NSNotification.Name("RemoveAD") , object: nil)
         
-        addBannerViewToView()
+        
+        if !isRemoveAD {
+            addBannerViewToView()
+        }
     }
     
     @objc func removeAD(notification: NSNotification) {
             
-        bannerView.removeFromSuperview()
+        isRemoveAD = true
+        
+        if bannerView != nil {
+            bannerView.removeFromSuperview()
+        }
     }
     
     func addBannerViewToView() {

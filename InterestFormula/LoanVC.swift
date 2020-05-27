@@ -28,7 +28,18 @@ class LoanVC: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldChange(_ textField: UITextField) {
         
-        textField.text = setInterval(text: textField.text!)
+        var newText = textField.text!.replacingOccurrences(of: ",", with: "")
+        
+        if newText.count > 11 {
+            newText.removeLast()
+        }
+        
+        if textField == yearInterestRate {
+            
+            textField.text = newText
+        } else {
+            textField.text = setInterval(text: newText)
+        }
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
@@ -62,34 +73,40 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         
         let newLoanAmount = loanAmount.text!.replacingOccurrences(of: ",", with: "")
         let newLoanMonth = loanMonth.text!.replacingOccurrences(of: ",", with: "")
-        let newYearInterestRate = yearInterestRate.text!.replacingOccurrences(of: ",", with: "")
+        let newYearInterestRate = Double(yearInterestRate.text!) ?? 0
         
         if loanAmount.text == "" || loanMonth.text == "" || yearInterestRate.text == "" || loanAmount.text == "0" || loanMonth.text == "0" || yearInterestRate.text == "0" {
+            let alert = UIAlertController(title: nil, message: "輸入資料有誤", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "確定", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
             return
         }
         
-        if interstitial.isReady {
-            interstitial.present(fromRootViewController: self)
-        } else {
-            interstitial = createAndLoadInterstitial()
+        if !isRemoveAD {
+            if interstitial.isReady {
+                interstitial.present(fromRootViewController: self)
+            } else {
+                interstitial = createAndLoadInterstitial()
+            }
         }
         
         let calculationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CalculationVC") as! CalculationVC
         
+        if newYearInterestRate == 0 {
+            
+            let alert = UIAlertController(title: nil, message: "輸入資料有誤", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "確定", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         calculationVC.loanAmount = Double(newLoanAmount)!
         calculationVC.loanMonth = Double(newLoanMonth)
-        calculationVC.yearInterestRate = Double(newYearInterestRate)
+        calculationVC.yearInterestRate = newYearInterestRate
         
         navigationController?.pushViewController(calculationVC, animated: true)
-    }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        
-        if textField == loanAmount {
-            if textField.text == "" { return }
-            
-            textField.text = setInterval(text: textField.text!)
-        }
     }
     
     func setInterval(text: String) -> String {

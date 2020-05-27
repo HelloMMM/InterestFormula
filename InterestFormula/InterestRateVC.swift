@@ -29,7 +29,13 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldChange(_ textField: UITextField) {
         
-        textField.text = setInterval(text: textField.text!)
+        var newText = textField.text!.replacingOccurrences(of: ",", with: "")
+        
+        if newText.count > 11 {
+            newText.removeLast()
+        }
+        
+        textField.text = setInterval(text: newText)
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
@@ -67,13 +73,19 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
         
         if newLoanAmount == "0" || newMonthMonry == "0" || newLoanMonth == "0" || loanAmount.text == "" || loanMonth.text == "" || monthMonry.text == "" {
             
+            let alert = UIAlertController(title: nil, message: "輸入資料有誤", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "確定", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
             return
         }
-    
-        if interstitial.isReady {
-            interstitial.present(fromRootViewController: self)
-        } else {
-            interstitial = createAndLoadInterstitial()
+        
+        if !isRemoveAD {
+            if interstitial.isReady {
+                interstitial.present(fromRootViewController: self)
+            } else {
+                interstitial = createAndLoadInterstitial()
+            }
         }
         
         let monthMoney = Int(newLoanAmount)! / Int(newLoanMonth)!

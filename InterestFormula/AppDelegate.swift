@@ -8,7 +8,9 @@
 
 import UIKit
 
+var isRemoveAD: Bool = false
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -16,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         AlaomfireManager.postAPI {}
+        let _ = IAPManager.shared
+        
+        if let removeAD = UserDefaults.standard.object(forKey: "isRemoveAD") {
+            
+            isRemoveAD = removeAD as! Bool
+        }
         
         return true
     }   
