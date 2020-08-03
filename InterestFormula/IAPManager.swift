@@ -44,6 +44,8 @@ class IAPManager: NSObject {
         
         if SKPaymentQueue.canMakePayments() {
             SKPaymentQueue.default().restoreCompletedTransactions()
+        } else {
+            NVLoadingView.stopBlockLoadingView()
         }
     }
 }
@@ -85,6 +87,8 @@ extension IAPManager: SKProductsRequestDelegate {
 extension IAPManager: SKPaymentTransactionObserver {
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        print(transactions.count)
         
         for transaction: SKPaymentTransaction in transactions {
             
@@ -135,5 +139,24 @@ extension IAPManager: SKPaymentTransactionObserver {
                 }
             }
         }
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        
+        NVLoadingView.stopBlockLoadingView()
+        
+        if queue.transactions.count == 0 {
+            
+            let alert = UIAlertController(title: "注意!", message: "恢復失敗,\n尚未購買去除廣告.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "確定", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        
+        print("queuequeuesdfds: \(queue)")
     }
 }

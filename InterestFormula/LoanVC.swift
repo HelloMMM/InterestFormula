@@ -10,7 +10,7 @@ import UIKit
 import GoogleMobileAds
 
 class LoanVC: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var loanAmount: UITextField!
     @IBOutlet weak var loanMonth: UITextField!
     @IBOutlet weak var yearInterestRate: UITextField!
@@ -128,3 +128,4 @@ extension LoanVC: GADInterstitialDelegate {
         interstitial = createAndLoadInterstitial()
     }
 }
+

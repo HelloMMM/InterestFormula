@@ -9,8 +9,6 @@
 import UIKit
 import GoogleMobileAds
 
-
-
 class TabBarVC: UITabBarController {
 
     var bannerView: GADBannerView!
@@ -24,7 +22,7 @@ class TabBarVC: UITabBarController {
         
         
         if !isRemoveAD {
-            addBannerViewToView()
+//            addBannerViewToView()
         }
     }
     
