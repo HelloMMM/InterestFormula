@@ -15,7 +15,6 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var monthMonry: UITextField!
     @IBOutlet weak var loanMonth: UITextField!
     @IBOutlet weak var interestResult: UILabel!
-    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +22,6 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
         loanAmount.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
         monthMonry.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
         loanMonth.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
-        
-        interstitial = createAndLoadInterstitial()
     }
     
     @objc func textFieldChange(_ textField: UITextField) {
@@ -36,19 +33,6 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
         }
         
         textField.text = setInterval(text: newText)
-    }
-    
-    func createAndLoadInterstitial() -> GADInterstitial {
-        
-        #if DEBUG
-            interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        #else
-            interstitial = GADInterstitial(adUnitID: "ca-app-pub-1223027370530841/1810875858")
-        #endif
-        interstitial.delegate = self
-        interstitial.load(GADRequest())
-        
-        return interstitial
     }
     
     @IBAction func clearClick(_ sender: UIButton) {
@@ -81,11 +65,8 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
         }
         
         if !isRemoveAD {
-            if interstitial.isReady {
-                interstitial.present(fromRootViewController: self)
-            } else {
-                interstitial = createAndLoadInterstitial()
-            }
+            let tabbar = tabBarController as! TabBarVC
+            tabbar.showInterstitial()
         }
         
         let monthMoney = Int(newLoanAmount)! / Int(newLoanMonth)!
@@ -108,13 +89,5 @@ class InterestRateVC: UIViewController, UITextFieldDelegate {
         let formattedText = NumberFormatter.localizedString(from: formatter, number: .decimal)
         
         return formattedText
-    }
-}
-
-extension InterestRateVC: GADInterstitialDelegate {
-    
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-
-        interstitial = createAndLoadInterstitial()
     }
 }

@@ -113,13 +113,13 @@
 				DB080209245ADF1600754DC6 /* BusinessVC.swift */,
 				DB41A5DC247D146D00C394C3 /* moreVC.swift */,
 				DB08020B245ADF7300754DC6 /* AlaomfireManager.swift */,
-				DB4927EF2456DF9D0001E389 /* Main.storyboard */,
 				DB08020D245ADF7A00754DC6 /* CurrencyValueModel.swift */,
 				DB08020E245ADF7A00754DC6 /* CustomPickerView.swift */,
 				DB41A5E0247D1C2800C394C3 /* IAPManager.swift */,
 				DB41A5E2247D1CA700C394C3 /* NVLoadingView.swift */,
-				DB4927F22456DF9E0001E389 /* Assets.xcassets */,
+				DB4927EF2456DF9D0001E389 /* Main.storyboard */,
 				DB4927F42456DF9E0001E389 /* LaunchScreen.storyboard */,
+				DB4927F22456DF9E0001E389 /* Assets.xcassets */,
 				DB4927F72456DF9E0001E389 /* Info.plist */,
 			);
 			path = InterestFormula;

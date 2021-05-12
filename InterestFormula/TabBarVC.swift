@@ -12,6 +12,7 @@ import GoogleMobileAds
 class TabBarVC: UITabBarController {
 
     var bannerView: GADBannerView!
+    var interstitial: GADInterstitial!
     var loanVC: LoanVC!
     var interestRateVC: InterestRateVC!
     
@@ -20,10 +21,10 @@ class TabBarVC: UITabBarController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(removeAD), name: NSNotification.Name("RemoveAD") , object: nil)
         
-        
         if !isRemoveAD {
             addBannerViewToView()
         }
+        interstitial = createAndLoadInterstitial()
     }
     
     @objc func removeAD(notification: NSNotification) {
@@ -32,6 +33,14 @@ class TabBarVC: UITabBarController {
         
         if bannerView != nil {
             bannerView.removeFromSuperview()
+        }
+    }
+    
+    func showInterstitial() {
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        } else {
+            interstitial = createAndLoadInterstitial()
         }
     }
     
@@ -55,6 +64,19 @@ class TabBarVC: UITabBarController {
         bannerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         bannerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         bannerView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor, constant: 0).isActive = true
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        
+        #if DEBUG
+            interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        #else
+            interstitial = GADInterstitial(adUnitID: "ca-app-pub-1223027370530841/1810875858")
+        #endif
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        
+        return interstitial
     }
 }
 
@@ -90,5 +112,13 @@ extension TabBarVC: GADBannerViewDelegate {
     /// the App Store), backgrounding the current app.
     func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
       print("adViewWillLeaveApplication")
+    }
+}
+
+extension TabBarVC: GADInterstitialDelegate {
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+
+        interstitial = createAndLoadInterstitial()
     }
 }

@@ -19,17 +19,13 @@ class CalculationVC: UIViewController {
     var repaymentOfPrincipal: Int = 0
     
     var total: Int = 0 {
-        
         didSet {
-            
             totalLab.text = setInterval(text: "\(total)")
         }
     }
     
     var interestTotal: Int = 0 {
-        
         didSet {
-            
             interestTotalLab.text = setInterval(text: "\(interestTotal)")
         }
     }

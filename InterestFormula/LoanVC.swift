@@ -14,7 +14,6 @@ class LoanVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loanAmount: UITextField!
     @IBOutlet weak var loanMonth: UITextField!
     @IBOutlet weak var yearInterestRate: UITextField!
-    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +21,6 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         loanAmount.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
         loanMonth.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
         yearInterestRate.addTarget(self, action: #selector(textFieldChange(_:)), for: .editingChanged)
-        
-        interstitial = createAndLoadInterstitial()
     }
     
     @objc func textFieldChange(_ textField: UITextField) {
@@ -40,19 +37,6 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         } else {
             textField.text = setInterval(text: newText)
         }
-    }
-    
-    func createAndLoadInterstitial() -> GADInterstitial {
-        
-        #if DEBUG
-            interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        #else
-            interstitial = GADInterstitial(adUnitID: "ca-app-pub-1223027370530841/1810875858")
-        #endif
-        interstitial.delegate = self
-        interstitial.load(GADRequest())
-        
-        return interstitial
     }
 
     @IBAction func clearClick(_ sender: UIButton) {
@@ -84,11 +68,8 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         }
         
         if !isRemoveAD {
-            if interstitial.isReady {
-                interstitial.present(fromRootViewController: self)
-            } else {
-                interstitial = createAndLoadInterstitial()
-            }
+            let tabbar = tabBarController as! TabBarVC
+            tabbar.showInterstitial()
         }
         
         let calculationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CalculationVC") as! CalculationVC
@@ -119,13 +100,5 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         return formattedText
     }
     
-}
-
-extension LoanVC: GADInterstitialDelegate {
-    
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-
-        interstitial = createAndLoadInterstitial()
-    }
 }
 
