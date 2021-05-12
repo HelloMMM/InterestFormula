@@ -22,7 +22,7 @@ class TabBarVC: UITabBarController {
         
         
         if !isRemoveAD {
-//            addBannerViewToView()
+            addBannerViewToView()
         }
     }
     
