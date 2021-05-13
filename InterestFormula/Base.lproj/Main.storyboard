@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cgd-5x-mZT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cgd-5x-mZT">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5H-Aq-h1H">
-                                <rect key="frame" x="161" y="122.5" width="194" height="34"/>
+                                <rect key="frame" x="161" y="123" width="194" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
@@ -25,7 +26,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pIP-YH-KI0">
-                                <rect key="frame" x="161" y="195.5" width="194" height="34"/>
+                                <rect key="frame" x="161" y="196" width="194" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
@@ -33,7 +34,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-4Q-s97">
-                                <rect key="frame" x="161" y="268.5" width="194" height="34"/>
+                                <rect key="frame" x="161" y="269" width="194" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -41,25 +42,25 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="貸款金額：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHR-un-NB2">
-                                <rect key="frame" x="44" y="128" width="97" height="23"/>
+                                <rect key="frame" x="44" y="128.5" width="97" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="貸款期數：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMe-kM-Nwp">
-                                <rect key="frame" x="44" y="201" width="97" height="23"/>
+                                <rect key="frame" x="44" y="201.5" width="97" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年利率(%)：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ok-Zc-lhV">
-                                <rect key="frame" x="44" y="274" width="112" height="23"/>
+                                <rect key="frame" x="44" y="274.5" width="116" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3J-mV-k12">
-                                <rect key="frame" x="101.5" y="388" width="72" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3J-mV-k12">
+                                <rect key="frame" x="101.5" y="388.5" width="72" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="7t3-a0-9yT"/>
                                     <constraint firstAttribute="width" constant="72" id="VDL-b7-6d2"/>
@@ -70,8 +71,8 @@
                                     <action selector="computer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H0X-PE-Kte"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh8-hv-FnO">
-                                <rect key="frame" x="201.5" y="388" width="72" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh8-hv-FnO">
+                                <rect key="frame" x="201.5" y="388.5" width="72" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="MjV-jF-3rc"/>
                                     <constraint firstAttribute="width" constant="72" id="Pad-nr-z3O"/>
@@ -82,33 +83,57 @@
                                     <action selector="clearClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FKq-w7-eC7"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vl9-BG-Ij3">
+                                <rect key="frame" x="25" y="68" width="325" height="32"/>
+                                <segments>
+                                    <segment title="本金平均攤還"/>
+                                    <segment title="本息平均攤還"/>
+                                </segments>
+                                <connections>
+                                    <action selector="calculationTypeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="nyv-2Z-O37"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本試算僅在利率不變下適用，計算結果為一近似值，僅供參考" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNj-Ck-gye">
+                                <rect key="frame" x="25" y="453.5" width="325" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mWa-4Q-s97" firstAttribute="centerY" secondItem="2ok-Zc-lhV" secondAttribute="centerY" id="5bu-oF-HhN"/>
-                            <constraint firstItem="jHR-un-NB2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="84" id="6Ov-fi-utx"/>
+                            <constraint firstItem="H5H-Aq-h1H" firstAttribute="top" secondItem="vl9-BG-Ij3" secondAttribute="bottom" constant="24" id="5rb-up-qi8"/>
                             <constraint firstItem="jHR-un-NB2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="B3d-Ra-Snb"/>
+                            <constraint firstItem="tNj-Ck-gye" firstAttribute="top" secondItem="W3J-mV-k12" secondAttribute="bottom" constant="30" id="CS3-z7-UWe"/>
                             <constraint firstItem="W3J-mV-k12" firstAttribute="top" secondItem="2ok-Zc-lhV" secondAttribute="bottom" constant="91" id="Iz1-nO-2Oe"/>
                             <constraint firstItem="W3J-mV-k12" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-50" id="Jh4-Pr-Rpq"/>
                             <constraint firstItem="jh8-hv-FnO" firstAttribute="top" secondItem="W3J-mV-k12" secondAttribute="top" id="Jrx-k2-y1m"/>
                             <constraint firstItem="pIP-YH-KI0" firstAttribute="leading" secondItem="H5H-Aq-h1H" secondAttribute="leading" id="KST-RB-jex"/>
                             <constraint firstItem="2ok-Zc-lhV" firstAttribute="leading" secondItem="PMe-kM-Nwp" secondAttribute="leading" id="L4x-Lr-17f"/>
+                            <constraint firstItem="vl9-BG-Ij3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LW3-ZK-zFY"/>
+                            <constraint firstItem="tNj-Ck-gye" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="M3F-5a-JkK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tNj-Ck-gye" secondAttribute="trailing" constant="25" id="MyA-BY-7X6"/>
                             <constraint firstItem="jh8-hv-FnO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="50" id="PP2-GN-pqu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vl9-BG-Ij3" secondAttribute="trailing" constant="25" id="WPd-km-QQq"/>
                             <constraint firstItem="pIP-YH-KI0" firstAttribute="centerY" secondItem="PMe-kM-Nwp" secondAttribute="centerY" id="YIB-Hf-hqM"/>
                             <constraint firstItem="H5H-Aq-h1H" firstAttribute="centerY" secondItem="jHR-un-NB2" secondAttribute="centerY" id="ZXK-SI-ZeN"/>
                             <constraint firstItem="PMe-kM-Nwp" firstAttribute="top" secondItem="jHR-un-NB2" secondAttribute="bottom" constant="50" id="aGL-rV-88l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H5H-Aq-h1H" secondAttribute="trailing" constant="20" id="dBk-Xz-mBl"/>
+                            <constraint firstItem="vl9-BG-Ij3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="gab-kU-vBu"/>
                             <constraint firstItem="H5H-Aq-h1H" firstAttribute="leading" secondItem="jHR-un-NB2" secondAttribute="trailing" constant="20" id="iMV-I1-IN7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mWa-4Q-s97" secondAttribute="trailing" constant="20" id="jKq-gD-vXZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pIP-YH-KI0" secondAttribute="trailing" constant="20" id="jQV-Qp-JYF"/>
+                            <constraint firstItem="vl9-BG-Ij3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="n2v-Fd-yJL"/>
                             <constraint firstItem="mWa-4Q-s97" firstAttribute="leading" secondItem="pIP-YH-KI0" secondAttribute="leading" id="o7O-QT-46p"/>
                             <constraint firstItem="2ok-Zc-lhV" firstAttribute="top" secondItem="PMe-kM-Nwp" secondAttribute="bottom" constant="50" id="pYo-bl-RSb"/>
                             <constraint firstItem="PMe-kM-Nwp" firstAttribute="leading" secondItem="jHR-un-NB2" secondAttribute="leading" id="wqY-xv-unx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="貸款試算" id="Twb-GP-c34"/>
                     <connections>
+                        <outlet property="calculationSegment" destination="vl9-BG-Ij3" id="OUC-DV-ZpH"/>
                         <outlet property="loanAmount" destination="H5H-Aq-h1H" id="WvB-3G-5gR"/>
                         <outlet property="loanMonth" destination="pIP-YH-KI0" id="kAP-yp-epC"/>
                         <outlet property="yearInterestRate" destination="mWa-4Q-s97" id="ia3-4Z-a7a"/>
@@ -158,7 +183,7 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="472"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="80" id="gvf-rx-TWu" customClass="CalculationCell" customModule="貸款計算器" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gvf-rx-TWu" id="HTn-Fg-SIg">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -273,7 +298,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="TrY-yX-JAa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2XB-Ja-OR9" firstAttribute="leading" secondItem="TrY-yX-JAa" secondAttribute="leading" id="05Q-MH-cMF"/>
                             <constraint firstItem="TrY-yX-JAa" firstAttribute="trailing" secondItem="5AZ-fS-1jp" secondAttribute="trailing" id="1vS-Bx-1Vo"/>
@@ -308,7 +334,6 @@
                             <constraint firstItem="DSB-ZL-Es8" firstAttribute="top" secondItem="TrY-yX-JAa" secondAttribute="top" id="tC1-XY-ERN"/>
                             <constraint firstItem="TrY-yX-JAa" firstAttribute="trailing" secondItem="V3z-su-gCk" secondAttribute="trailing" constant="20" id="tah-9e-FTf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="TrY-yX-JAa"/>
                     </view>
                     <navigationItem key="navigationItem" id="eHC-yH-Q22"/>
                     <connections>
@@ -333,10 +358,10 @@
                             <tableViewSection id="2rr-ab-7wB">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="45" id="hay-Hj-kC1">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hay-Hj-kC1" id="f49-Xf-qVq">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349.5" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="去除廣告" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuj-cW-hMi">
@@ -364,10 +389,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="45" id="aCF-YE-bm7">
-                                        <rect key="frame" x="0.0" y="73" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="69.5" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aCF-YE-bm7" id="h7t-bQ-dXy">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349.5" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恢復之前購買" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh3-B2-ovF">
@@ -395,7 +420,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="45" id="3df-BV-ffB">
-                                        <rect key="frame" x="0.0" y="118" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="114.5" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3df-BV-ffB" id="0K5-Zi-AGf">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
@@ -408,7 +433,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tym-nB-Qa4">
-                                                    <rect key="frame" x="310" y="0.0" width="55" height="45"/>
+                                                    <rect key="frame" x="311" y="0.0" width="54" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -435,10 +460,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="45" id="p1D-oh-kEa">
-                                        <rect key="frame" x="0.0" y="163" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="159.5" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p1D-oh-kEa" id="phw-oW-KJl">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349.5" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服與意見回饋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G2-h3-vqz">
@@ -448,7 +473,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIo-yJ-0Pb">
-                                                    <rect key="frame" x="338" y="0.0" width="0.0" height="45"/>
+                                                    <rect key="frame" x="339.5" y="0.0" width="0.0" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -559,7 +584,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JM-fK-TFt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JM-fK-TFt">
                                 <rect key="frame" x="101.5" y="388" width="72" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="f64-YP-Gzs"/>
@@ -571,7 +596,7 @@
                                     <action selector="computer:" destination="cXl-kS-hEe" eventType="touchUpInside" id="A9I-Di-YdJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPv-LU-6Bf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPv-LU-6Bf">
                                 <rect key="frame" x="201.5" y="388" width="72" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="8pP-Oc-t5L"/>
@@ -590,7 +615,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wH3-Tt-7QR">
-                                <rect key="frame" x="103" y="340" width="33" height="37"/>
+                                <rect key="frame" x="103" y="340" width="34.5" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="5lg-Bf-O5s"/>
                                 </constraints>
@@ -599,7 +624,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="b75-U2-xqc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AUb-Nx-f3f" firstAttribute="leading" secondItem="7Ih-oa-qWX" secondAttribute="trailing" constant="20" id="3Nb-aw-BEL"/>
                             <constraint firstItem="m9E-9c-nP1" firstAttribute="leading" secondItem="7Ih-oa-qWX" secondAttribute="leading" id="3SM-2n-Kiu"/>
@@ -625,7 +651,6 @@
                             <constraint firstItem="Vdo-03-z4k" firstAttribute="leading" secondItem="b75-U2-xqc" secondAttribute="leading" constant="44" id="yaE-kr-HWf"/>
                             <constraint firstItem="7Ih-oa-qWX" firstAttribute="leading" secondItem="l8R-Fz-Qa4" secondAttribute="leading" id="yon-At-Xcc"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="b75-U2-xqc"/>
                     </view>
                     <navigationItem key="navigationItem" title="利率試算" id="Gnp-M5-tzb"/>
                     <connections>
@@ -685,8 +710,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dji-ke-N9i">
-                                <rect key="frame" x="41" y="136" width="119" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dji-ke-N9i">
+                                <rect key="frame" x="41" y="136" width="118" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="jEh-CV-MYM"/>
                                 </constraints>
@@ -696,8 +721,8 @@
                                     <action selector="currency1Click:" destination="7dk-yO-VgS" eventType="touchUpInside" id="y0X-Fp-AcG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djd-j0-s9u">
-                                <rect key="frame" x="41" y="306" width="114" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djd-j0-s9u">
+                                <rect key="frame" x="41" y="306" width="113" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="KqF-eh-sho"/>
                                 </constraints>
@@ -735,7 +760,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ctz-zo-YtR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eSX-Ks-9fd" firstAttribute="leading" secondItem="ctz-zo-YtR" secondAttribute="leading" constant="41" id="01W-AT-pnv"/>
                             <constraint firstItem="djd-j0-s9u" firstAttribute="leading" secondItem="ctz-zo-YtR" secondAttribute="leading" constant="41" id="0Gj-o0-pTm"/>
@@ -750,7 +776,6 @@
                             <constraint firstItem="dji-ke-N9i" firstAttribute="leading" secondItem="ctz-zo-YtR" secondAttribute="leading" constant="41" id="u2h-Aw-pbD"/>
                             <constraint firstItem="ctz-zo-YtR" firstAttribute="trailing" secondItem="eSX-Ks-9fd" secondAttribute="trailing" constant="41" id="vxw-xZ-wUw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ctz-zo-YtR"/>
                     </view>
                     <navigationItem key="navigationItem" title="貨幣轉換" id="n1j-hJ-Qls"/>
                     <connections>
@@ -813,5 +838,11 @@
         <image name="question" width="512" height="512"/>
         <image name="restore" width="128" height="128"/>
         <image name="version" width="128" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

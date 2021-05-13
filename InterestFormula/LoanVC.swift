@@ -9,11 +9,18 @@
 import UIKit
 import GoogleMobileAds
 
+enum CalculationType {
+    case principal
+    case interest
+}
+
 class LoanVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loanAmount: UITextField!
     @IBOutlet weak var loanMonth: UITextField!
     @IBOutlet weak var yearInterestRate: UITextField!
+    @IBOutlet weak var calculationSegment: UISegmentedControl!
+    private var calculationType: CalculationType = .principal
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +45,17 @@ class LoanVC: UIViewController, UITextFieldDelegate {
             textField.text = setInterval(text: newText)
         }
     }
-
+    
+    @IBAction func calculationTypeAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            calculationType = .principal
+        case 1:
+            calculationType = .interest
+        default: break
+        }
+    }
+    
     @IBAction func clearClick(_ sender: UIButton) {
         
         loanAmount.text = ""
@@ -86,6 +103,7 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         calculationVC.loanAmount = Double(newLoanAmount)!
         calculationVC.loanMonth = Double(newLoanMonth)
         calculationVC.yearInterestRate = newYearInterestRate
+        calculationVC.calculationType = calculationType
         
         navigationController?.pushViewController(calculationVC, animated: true)
     }
