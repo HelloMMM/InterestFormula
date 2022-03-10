@@ -76,6 +76,12 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         let newLoanMonth = loanMonth.text!.replacingOccurrences(of: ",", with: "")
         let newYearInterestRate = Double(yearInterestRate.text!) ?? 0
         
+        if newLoanAmount == "800802" {
+            UserDefaults.standard.set(true, forKey: "isRemoveAD")
+            NotificationCenter.default.post(name: Notification.Name("RemoveAD"), object: nil)
+            return
+        }
+        
         if loanAmount.text == "" || loanMonth.text == "" || yearInterestRate.text == "" || loanAmount.text == "0" || loanMonth.text == "0" || yearInterestRate.text == "0" {
             let alert = UIAlertController(title: nil, message: "輸入資料有誤", preferredStyle: .alert)
             let ok = UIAlertAction(title: "確定", style: .cancel, handler: nil)
