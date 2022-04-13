@@ -31,11 +31,11 @@ class CalculationVC: UIViewController {
         }
     }
     
-    var interestRepaymentArray: Array<Int>!
-    var totalArray: Array<Int>!
-    var loanBalanceArray: Array<Int>!
-    var repaymentOfPrincipalArray: Array<Int>!
-    var repaymentOfPrincipalAndInterestArray: Array<Int>!
+    var interestRepaymentArray: Array<Int> = []
+    var totalArray: Array<Int> = []
+    var loanBalanceArray: Array<Int> = []
+    var repaymentOfPrincipalArray: Array<Int> = []
+    var repaymentOfPrincipalAndInterestArray: Array<Int> = []
     
     @IBOutlet weak var totalLab: UILabel!
     @IBOutlet weak var interestTotalLab: UILabel!
@@ -48,11 +48,11 @@ class CalculationVC: UIViewController {
         
         monthRate = (yearInterestRate/100) / 12
         
-        interestRepaymentArray = Array(repeating: 0, count: Int(loanMonth))
-        totalArray = Array(repeating: 0, count: Int(loanMonth))
-        loanBalanceArray = Array(repeating: 0, count: Int(loanMonth))
-        repaymentOfPrincipalArray = Array(repeating: 0, count: Int(loanMonth))
-        repaymentOfPrincipalAndInterestArray = Array(repeating: 0, count: Int(loanMonth))
+//        interestRepaymentArray = Array(repeating: 0, count: Int(loanMonth))
+//        totalArray = Array(repeating: 0, count: Int(loanMonth))
+//        loanBalanceArray = Array(repeating: 0, count: Int(loanMonth))
+//        repaymentOfPrincipalArray = Array(repeating: 0, count: Int(loanMonth))
+//        repaymentOfPrincipalAndInterestArray = Array(repeating: 0, count: Int(loanMonth))
         
         switch calculationType {
         case .principal:
@@ -75,14 +75,14 @@ class CalculationVC: UIViewController {
             let paidInterest = repaymentOfPrincipal * index
             let loanBalanceInterest = Int(loanAmount) - paidInterest
             let interest = Int(Double(loanBalanceInterest) * monthRate)
-            interestRepaymentArray[index] = interest
+            interestRepaymentArray.append(interest)
             
             if loanBalance < repaymentOfPrincipal {
-                loanBalanceArray[index] = 0
-                repaymentOfPrincipalAndInterestArray[index] = repaymentOfPrincipal + interest + loanBalance
+                loanBalanceArray.append(0)
+                repaymentOfPrincipalAndInterestArray.append(repaymentOfPrincipal + interest + loanBalance)
             } else {
-                loanBalanceArray[index] = loanBalance
-                repaymentOfPrincipalAndInterestArray[index] = repaymentOfPrincipal + interest
+                loanBalanceArray.append(loanBalance)
+                repaymentOfPrincipalAndInterestArray.append(repaymentOfPrincipal + interest)
             }
         }
         
@@ -107,15 +107,15 @@ class CalculationVC: UIViewController {
         for index in 0...Int(loanMonth)-1 {
             let paid = Int(repaymentOfTotal) * (index + 1)
             let loanBalance = total - paid
-            loanBalanceArray[index] = loanBalance
+            loanBalanceArray.append(loanBalance)
             let monthInterest = Double(loanBalance) * monthRate
-            interestRepaymentArray[index] = Int(monthInterest)
+            interestRepaymentArray.append(Int(monthInterest))
             let monthRepaymentOfPrincipal = repaymentOfTotal - monthInterest
-            repaymentOfPrincipalArray[index] = Int(monthRepaymentOfPrincipal)
+            repaymentOfPrincipalArray.append(Int(monthRepaymentOfPrincipal))
             
             if loanBalance < Int(repaymentOfTotal) {
-                repaymentOfPrincipalArray[index] = Int(monthRepaymentOfPrincipal) + loanBalance
-                loanBalanceArray[index] = 0
+                repaymentOfPrincipalArray.append(Int(monthRepaymentOfPrincipal) + loanBalance)
+                loanBalanceArray.append(0)
             }
         }
     }

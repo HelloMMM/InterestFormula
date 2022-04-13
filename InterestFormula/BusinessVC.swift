@@ -16,19 +16,21 @@ class BusinessVC: UIViewController {
     @IBOutlet weak var currencyText2: UITextField!
     @IBOutlet weak var changeBtn: UIButton!
     
-    let countryCode = ["USDTWD", "USDHKD", "USDCNY",
+    let countryCode = ["USDTWD", "USDJPY",
+                       "USDHKD", "USDCNY",
                        "USD", "USDEUR", "USDAUD",
-                       "USDJPY", "USDKRW", "USDTHB", "USDMYR"]
-    let country = ["🇹🇼台幣 TWD", "🇭🇰港幣 HKD", "🇨🇳人民幣 CNY",
+                       "USDKRW", "USDTHB", "USDGBP"]
+    let country = ["🇹🇼台幣 TWD", "🇯🇵日圓 JPY",
+                   "🇭🇰港幣 HKD", "🇨🇳人民幣 CNY",
                    "🇺🇸美金 USD", "🇪🇺歐元 EUR", "🇦🇺澳元 AUD",
-                   "🇯🇵日圓 JPY", "🇰🇷韓元 KRW", "🇹🇭泰銖 THB", "🇬🇧英鎊 MYR"]
+                   "🇰🇷韓元 KRW", "🇹🇭泰銖 THB", "🇬🇧英鎊 GBP"]
     
     var country1 = "USDTWD"
     var country2 = "USD"
     var country1Extate: Double = 0
     var country2Extate: Double = 0
     var currency1LastSelect = 0
-    var currency2LastSelect = 3
+    var currency2LastSelect = 4
     var isZero = false
     var isPoint = false
     

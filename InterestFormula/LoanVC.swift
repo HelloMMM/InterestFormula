@@ -41,6 +41,12 @@ class LoanVC: UIViewController, UITextFieldDelegate {
         if textField == yearInterestRate {
             
             textField.text = newText
+        } else if textField == loanMonth {
+            if (Int(newText) ?? 0) > 360 {
+                textField.text = setInterval(text: "360")
+            } else {
+                textField.text = setInterval(text: newText)
+            }
         } else {
             textField.text = setInterval(text: newText)
         }
