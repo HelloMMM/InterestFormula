@@ -12,7 +12,7 @@ import GoogleMobileAds
 class TabBarVC: UITabBarController, UITabBarControllerDelegate {
 
     var bannerView: GADBannerView!
-    var interstitial: GADInterstitial!
+    var interstitial: GADInterstitialAd?
     var loanVC: LoanVC!
     var interestRateVC: InterestRateVC!
     
@@ -26,7 +26,8 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         if !isRemoveAD {
             addBannerViewToView()
         }
-        interstitial = createAndLoadInterstitial()
+        
+        createAndLoadInterstitial()
     }
     
     @objc func removeAD(notification: NSNotification) {
@@ -39,16 +40,19 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     }
     
     func showInterstitial() {
-        if interstitial.isReady {
-            interstitial.present(fromRootViewController: self)
-        } else {
-            interstitial = createAndLoadInterstitial()
+        if interstitial != nil {
+            interstitial!.present(fromRootViewController: self)
         }
     }
     
     func addBannerViewToView() {
         
-        bannerView = GADBannerView(adSize: kGADAdSizeFullBanner)
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        view.addSubview(bannerView)
+        bannerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor, constant: 0).isActive = true
+        bannerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        bannerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        bannerView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor, constant: 0).isActive = true
         
         #if DEBUG
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
@@ -61,24 +65,25 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         bannerView.load(GADRequest())
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(bannerView)
-        bannerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor, constant: 0).isActive = true
-        bannerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        bannerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        bannerView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor, constant: 0).isActive = true
+        
     }
     
-    func createAndLoadInterstitial() -> GADInterstitial {
+    func createAndLoadInterstitial() {
         
+        let request = GADRequest()
+        var adUnitID = ""
         #if DEBUG
-            interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+            adUnitID = "ca-app-pub-3940256099942544/4411468910"
         #else
-            interstitial = GADInterstitial(adUnitID: "ca-app-pub-1223027370530841/1810875858")
+            adUnitID = "ca-app-pub-1223027370530841/1810875858"
         #endif
-        interstitial.delegate = self
-        interstitial.load(GADRequest())
         
-        return interstitial
+        GADInterstitialAd.load(withAdUnitID: adUnitID, request: request) { [self] ad, error in
+            if error == nil {
+                interstitial = ad
+                interstitial?.fullScreenContentDelegate = self
+            }
+        }
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
@@ -104,43 +109,44 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
 
 extension TabBarVC: GADBannerViewDelegate {
     
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-      print("adViewDidReceiveAd")
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+      print("bannerViewDidReceiveAd")
     }
 
-    /// Tells the delegate an ad request failed.
-    func adView(_ bannerView: GADBannerView,
-        didFailToReceiveAdWithError error: GADRequestError) {
-      print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
 
-    /// Tells the delegate that a full-screen view will be presented in response
-    /// to the user clicking on an ad.
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-      print("adViewWillPresentScreen")
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+      print("bannerViewDidRecordImpression")
     }
 
-    /// Tells the delegate that the full-screen view will be dismissed.
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-      print("adViewWillDismissScreen")
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillPresentScreen")
     }
 
-    /// Tells the delegate that the full-screen view has been dismissed.
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-      print("adViewDidDismissScreen")
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillDIsmissScreen")
     }
 
-    /// Tells the delegate that a user click will open another app (such as
-    /// the App Store), backgrounding the current app.
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-      print("adViewWillLeaveApplication")
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewDidDismissScreen")
     }
 }
 
-extension TabBarVC: GADInterstitialDelegate {
+extension TabBarVC: GADFullScreenContentDelegate {
     
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-
-        interstitial = createAndLoadInterstitial()
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad will present full screen content.
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        createAndLoadInterstitial()
     }
 }

@@ -24,7 +24,7 @@ class IAPManager: NSObject {
     
     func startPurchase() {
         
-        NVLoadingView.startBlockLoadingView()
+        NVLoadingView.shared.startBlockLoadingView()
         
         for transaction: SKPaymentTransaction in SKPaymentQueue.default().transactions {
             
@@ -40,12 +40,12 @@ class IAPManager: NSObject {
     
     func restorePurchase() {
         
-        NVLoadingView.startBlockLoadingView()
+        NVLoadingView.shared.startBlockLoadingView()
         
         if SKPaymentQueue.canMakePayments() {
             SKPaymentQueue.default().restoreCompletedTransactions()
         } else {
-            NVLoadingView.stopBlockLoadingView()
+            NVLoadingView.shared.stopBlockLoadingView()
         }
     }
 }
@@ -69,7 +69,7 @@ extension IAPManager: SKProductsRequestDelegate {
             }
         } else {
             
-            NVLoadingView.stopBlockLoadingView()
+            NVLoadingView.shared.stopBlockLoadingView()
             return
         }
         
@@ -79,7 +79,7 @@ extension IAPManager: SKProductsRequestDelegate {
             SKPaymentQueue.default().add(payment)
         } else {
             
-            NVLoadingView.stopBlockLoadingView()
+            NVLoadingView.shared.stopBlockLoadingView()
         }
     }
 }
@@ -98,7 +98,7 @@ extension IAPManager: SKPaymentTransactionObserver {
                 case .purchased:
                     
                     print("交易成功")
-                    NVLoadingView.stopBlockLoadingView()
+                    NVLoadingView.shared.stopBlockLoadingView()
                     UserDefaults.standard.set(true, forKey: "isRemoveAD")
                     NotificationCenter.default.post(name: Notification.Name("RemoveAD"), object: nil)
                     SKPaymentQueue.default().finishTransaction(transaction)
@@ -107,7 +107,7 @@ extension IAPManager: SKPaymentTransactionObserver {
                 case .failed:
                     print("交易失敗")
                     
-                    NVLoadingView.stopBlockLoadingView()
+                    NVLoadingView.shared.stopBlockLoadingView()
                     SKPaymentQueue.default().finishTransaction(transaction)
                     if let error = transaction.error as? SKError {
                         switch error.code {
@@ -124,7 +124,7 @@ extension IAPManager: SKPaymentTransactionObserver {
                 case .restored:
                     
                     print("復原成功...")
-                    NVLoadingView.stopBlockLoadingView()
+                    NVLoadingView.shared.stopBlockLoadingView()
                     UserDefaults.standard.set(true, forKey: "isRemoveAD")
                     NotificationCenter.default.post(name: Notification.Name("RemoveAD"), object: nil)
                     SKPaymentQueue.default().finishTransaction(transaction)
@@ -135,7 +135,7 @@ extension IAPManager: SKPaymentTransactionObserver {
                     UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
                 default:
                     print(transaction.transactionState.rawValue)
-                    NVLoadingView.stopBlockLoadingView()
+                    NVLoadingView.shared.stopBlockLoadingView()
                 }
             }
         }
@@ -143,7 +143,7 @@ extension IAPManager: SKPaymentTransactionObserver {
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         
-        NVLoadingView.stopBlockLoadingView()
+        NVLoadingView.shared.stopBlockLoadingView()
         
         if queue.transactions.count == 0 {
             

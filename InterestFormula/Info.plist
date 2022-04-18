@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>This identifier will be used to deliver personalized ads to you.</string>
+	<string>請選擇允許獲取IDFA，用於提供與您相關連的廣告資訊</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

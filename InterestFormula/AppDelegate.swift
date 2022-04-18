@@ -30,14 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             isRemoveAD = removeAD as! Bool
         }
 
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                GADMobileAds.sharedInstance().start(completionHandler: nil)
-            })
-        } else {
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-        }
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
 
         return true
-    }   
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in })
+        }
+    }
 }

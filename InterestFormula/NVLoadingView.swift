@@ -9,22 +9,24 @@
 import UIKit
 import NVActivityIndicatorView
 
-class NVLoadingView: UIView {
+class NVLoadingView {
 
-    class func startBlockLoadingView() {
+    static let shared = NVLoadingView()
+    var activityIndicatorView: NVActivityIndicatorView?
+    
+    func startBlockLoadingView() {
         
-        let activityData = ActivityData(size: nil, message: nil, messageFont: nil, messageSpacing: nil, type: .ballPulseSync, color: nil, padding: nil, displayTimeThreshold: nil, minimumDisplayTime: nil, backgroundColor: nil, textColor: nil)
-
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+//        activityIndicatorView = NVActivityIndicatorView(frame: UIScreen.main.bounds, type: .ballPulseSync, color: nil, padding: nil)
+//        UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(activityIndicatorView!)
+//        activityIndicatorView?.startAnimating()
+//        let activityData = ActivityData(size: nil, message: nil, messageFont: nil, messageSpacing: nil, type: .ballPulseSync, color: nil, padding: nil, displayTimeThreshold: nil, minimumDisplayTime: nil, backgroundColor: nil, textColor: nil)
+//
+//        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
     }
     
-    class func stopBlockLoadingView() {
+    func stopBlockLoadingView() {
         
-        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+//        activityIndicatorView?.stopAnimating()
+//        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
-}
-
-extension NVLoadingView: NVActivityIndicatorViewable {
-    
-    
 }
