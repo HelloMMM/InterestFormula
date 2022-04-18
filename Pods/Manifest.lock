@@ -46,15 +46,11 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - NVActivityIndicatorView (5.1.1):
-    - NVActivityIndicatorView/Base (= 5.1.1)
-  - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (2.1.0)
 
 DEPENDENCIES:
   - Alamofire
   - Google-Mobile-Ads-SDK
-  - NVActivityIndicatorView
 
 SPEC REPOS:
   trunk:
@@ -64,7 +60,6 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - nanopb
-    - NVActivityIndicatorView
     - PromisesObjC
 
 SPEC CHECKSUMS:
@@ -74,9 +69,8 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
 
-PODFILE CHECKSUM: f8b0afa9c3b0d2568ef74611102b174f056e4a71
+PODFILE CHECKSUM: d24048605d22d53348c30ea826cd7505bfcb20aa
 
 COCOAPODS: 1.11.2
