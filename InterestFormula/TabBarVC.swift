@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class TabBarVC: UITabBarController {
+class TabBarVC: UITabBarController, UITabBarControllerDelegate {
 
     var bannerView: GADBannerView!
     var interstitial: GADInterstitial!
@@ -18,6 +18,8 @@ class TabBarVC: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(removeAD), name: NSNotification.Name("RemoveAD") , object: nil)
         
@@ -77,6 +79,26 @@ class TabBarVC: UITabBarController {
         interstitial.load(GADRequest())
         
         return interstitial
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        guard let index = tabBarController.viewControllers?.enumerated().first(where: { $0.element == viewController })?.offset else { return true }
+        
+        switch index {
+        case 2:
+            if currencyValueModel == nil {
+                let alert = UIAlertController(title: "注意", message: "貨幣轉換需要網路功能, 請開啟網路後再試一次.", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "確認", style: .default, handler: nil)
+                alert.addAction(confirm)
+                
+                present(alert, animated: true, completion: nil)
+                return false
+            }
+        default: break
+        }
+        
+        return true
     }
 }
 

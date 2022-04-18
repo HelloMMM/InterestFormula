@@ -54,8 +54,8 @@ class BusinessVC: UIViewController {
     
     func setExrate() {
         
-        country1Extate = (currencyValueModel[country1] as! Dictionary<String, Any>)["Exrate"] as! Double
-        country2Extate = (currencyValueModel[country2] as! Dictionary<String, Any>)["Exrate"] as! Double
+        country1Extate = (currencyValueModel![country1] as! Dictionary<String, Any>)["Exrate"] as! Double
+        country2Extate = (currencyValueModel![country2] as! Dictionary<String, Any>)["Exrate"] as! Double
     }
     
     @IBAction func exchange(_ sender: UIButton) {

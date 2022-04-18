@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         AlaomfireManager.postAPI {}
+        if #available(iOS 12.0, *) {
+            let _ = NetworkManager.shared
+        }
         let _ = IAPManager.shared
         
         if let removeAD = UserDefaults.standard.object(forKey: "isRemoveAD") {

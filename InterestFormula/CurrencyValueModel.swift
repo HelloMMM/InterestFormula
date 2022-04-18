@@ -8,4 +8,17 @@
 
 import Foundation
 
-var currencyValueModel: Dictionary<String, Any>!
+var currencyValueModel: Dictionary<String, Any>? {
+    set {
+        UserDefaults.standard.set(newValue, forKey: "currencyValueModel")
+        UserDefaults.standard.synchronize()
+    }
+    
+    get {
+        if let model = UserDefaults.standard.dictionary(forKey: "currencyValueModel") {
+            return model
+        } else {
+            return nil
+        }
+    }
+}
