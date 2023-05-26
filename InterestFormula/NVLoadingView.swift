@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
+//import NVActivityIndicatorView
 
 class NVLoadingView {
 
     static let shared = NVLoadingView()
-    var activityIndicatorView: NVActivityIndicatorView?
+//    var activityIndicatorView: NVActivityIndicatorView?
     
     func startBlockLoadingView() {
         
