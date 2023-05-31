@@ -404,7 +404,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 38AMPUQ98F;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 38AMPUQ98F;
 				INFOPLIST_FILE = InterestFormula/Info.plist;
@@ -431,7 +431,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 38AMPUQ98F;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 38AMPUQ98F;
 				INFOPLIST_FILE = InterestFormula/Info.plist;
