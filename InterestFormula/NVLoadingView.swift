@@ -7,26 +7,34 @@
 //
 
 import UIKit
-//import NVActivityIndicatorView
+import NVActivityIndicatorView
 
 class NVLoadingView {
 
     static let shared = NVLoadingView()
-//    var activityIndicatorView: NVActivityIndicatorView?
+    var activityIndicatorView: NVActivityIndicatorView!
+    var blockerView: UIView?
+    
+    init() {
+        blockerView = UIView(frame: UIScreen.main.bounds)
+        blockerView?.backgroundColor = .black
+        blockerView?.alpha = 0
+        
+        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 50), type: .ballPulseSync)
+        activityIndicatorView.center = blockerView?.center ?? .zero
+        blockerView?.addSubview(activityIndicatorView)
+        
+        UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(blockerView!)
+    }
     
     func startBlockLoadingView() {
-        
-//        activityIndicatorView = NVActivityIndicatorView(frame: UIScreen.main.bounds, type: .ballPulseSync, color: nil, padding: nil)
-//        UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(activityIndicatorView!)
-//        activityIndicatorView?.startAnimating()
-//        let activityData = ActivityData(size: nil, message: nil, messageFont: nil, messageSpacing: nil, type: .ballPulseSync, color: nil, padding: nil, displayTimeThreshold: nil, minimumDisplayTime: nil, backgroundColor: nil, textColor: nil)
-//
-//        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        blockerView?.alpha = 0.5
+        activityIndicatorView.startAnimating()
     }
     
     func stopBlockLoadingView() {
-        
-//        activityIndicatorView?.stopAnimating()
-//        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+        blockerView?.alpha = 0
+        activityIndicatorView.stopAnimating()
+        blockerView?.removeFromSuperview()
     }
 }

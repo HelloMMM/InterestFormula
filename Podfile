@@ -9,6 +9,7 @@ target 'InterestFormula' do
 
 pod 'Alamofire'
 pod 'Google-Mobile-Ads-SDK'
+pod 'NVActivityIndicatorView'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

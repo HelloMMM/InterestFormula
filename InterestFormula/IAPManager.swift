@@ -26,10 +26,11 @@ class IAPManager: NSObject {
         
         NVLoadingView.shared.startBlockLoadingView()
         
-        for transaction: SKPaymentTransaction in SKPaymentQueue.default().transactions {
-            
-            SKPaymentQueue.default().finishTransaction(transaction)
-        }
+//        for transaction: SKPaymentTransaction in SKPaymentQueue.default().transactions {
+//            DispatchQueue.main.async {
+//                SKPaymentQueue.default().finishTransaction(transaction)
+//            }
+//        }
         
         let products = NSSet(array: [productID])
         
