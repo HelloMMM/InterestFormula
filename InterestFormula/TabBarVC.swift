@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import RxSwift
 
 class TabBarVC: UITabBarController, UITabBarControllerDelegate {
 
@@ -15,6 +16,8 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     var interstitial: GADInterstitialAd?
     var loanVC: LoanVC!
     var interestRateVC: InterestRateVC!
+    let timeDisposeBag = DisposeBag()
+    var isLoadMob: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +43,12 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     }
     
     func showInterstitial() {
-        if interstitial != nil {
+        if interstitial != nil, !isLoadMob {
             interstitial!.present(fromRootViewController: self)
+            isLoadMob = true
+            Observable<Int>.timer(.seconds(60), scheduler: MainScheduler.instance).subscribe(with: self) { v, _ in
+                v.isLoadMob = false
+            }.disposed(by: timeDisposeBag)
         }
     }
     

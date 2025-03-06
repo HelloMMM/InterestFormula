@@ -10,6 +10,8 @@ target 'InterestFormula' do
 pod 'Alamofire'
 pod 'Google-Mobile-Ads-SDK'
 pod 'NVActivityIndicatorView'
+pod 'RxSwift', '~> 6.7.1'
+pod 'RxBiBinding', '~> 0.3.5'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
