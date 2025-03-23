@@ -64,8 +64,8 @@ DEPENDENCIES:
   - Alamofire
   - Google-Mobile-Ads-SDK
   - NVActivityIndicatorView
-  - RxBiBinding (~> 0.3.5)
-  - RxSwift (~> 6.7.1)
+  - RxBiBinding
+  - RxSwift
 
 SPEC REPOS:
   trunk:
@@ -96,6 +96,6 @@ SPEC CHECKSUMS:
   RxRelay: 4151ba01152436b08271e08410135e099880eae5
   RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
 
-PODFILE CHECKSUM: 5e2687ce18323f29eb2b32f5e38ad432e707242a
+PODFILE CHECKSUM: 58894c9cd3e1bb6a4b463fe5c8985813dd260440
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.15.2
